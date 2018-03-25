@@ -24,6 +24,8 @@
         "babel-preset-react": "^6.16.0",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.15.2",
+        "chalk": "^2.3.2",
+        "chalk-animation": "^1.5.0",
         "compression": "^1.7.0",
         "cookie-parser": "^1.4.3",
         "cookie-session": "^2.0.0-alpha.2",
@@ -42,7 +44,7 @@
         "redux-promise": "^0.5.3",
         "socket-cookie-session": "github:spicedacademy/socket-cookie-session",
         "socket.io": "^2.0.3",
-        "spiced-pg": "spicedacademy/spiced-pg",
+        "spiced-pg": "github:spicedacademy/spiced-pg",
         "uid-safe": "^2.1.4",
         "webpack": "^1.14.0",
         "webpack-dev-middleware": "^1.8.4"

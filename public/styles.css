@@ -1,0 +1,15 @@
+/* STYLINGS FOR APP */
+.boards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.current-boards {
+    background-color: tomato;
+    width: 100px;
+    height: 250px;
+    margin: 5px;
+    border-radius: 5px;
+    display: inline-flex;
+}
