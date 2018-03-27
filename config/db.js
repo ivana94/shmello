@@ -61,7 +61,7 @@ module.exports.getUserBoardNames = (id) => {
 
     return db.query(
 
-        `SELECT board FROM boards WHERE user_id = $1`,
+        `SELECT board, id, user_id FROM boards WHERE user_id = $1`,
         [id]
 
     ).then((results) => {

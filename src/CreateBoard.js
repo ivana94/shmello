@@ -26,18 +26,18 @@ function CreateBoard(props) {
 
 
 const mapStateToProps = state => {
-  return {
-    user: state.user
-  }
+    return {
+        user: state.user
+    }
 }
 
 
 const mapDispatchToProps = dispatch => {
-  return {
-    onClick: e => {
-      dispatch(createBoard(e.target.querySelector('input[name="board"]').value))
+    return {
+        onClick: e => {
+          dispatch(createBoard(e.target.querySelector('input[name="board"]').value))
+        }
     }
-  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateBoard);

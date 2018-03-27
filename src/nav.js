@@ -6,6 +6,10 @@ import { connect } from "react-redux";
 
 function Nav(props) {
 
+    if (!props.user) {
+        return null;
+    }
+
         return (
             <div>
                 <p>{ props.user.first } <span className = "+">+</span></p>
