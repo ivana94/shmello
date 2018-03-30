@@ -6,9 +6,7 @@ import { connect } from "react-redux";
 
 function Nav(props) {
 
-    if (!props.user) {
-        return null;
-    }
+    if (!props.user) return null;
 
         return (
             <div>

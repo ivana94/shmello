@@ -7,22 +7,16 @@ import CreateBoard from './CreateBoard';
 
 
 
-function SingleBoard() {
+function SingleBoard(props) {
 
 
-
-
-
-
-
-
-
+    if (!props.boards) return null;
 
 
         return (
 
             <div className = "container">
-                <p>Single board</p>
+                <h1>{ props.boards[0].board }</h1>
             </div>
 
         ) // END RETURN

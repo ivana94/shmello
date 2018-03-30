@@ -7,7 +7,6 @@ import axios from 'axios';
 // GET USER INFO AND PUT IN REDUX STORE
 export const userInfo = () => {
     return axios.get('/user').then(({ data }) => {
-        console.log("data: ", data);
         return {
           type: "GET_USER_INFO",
           user: data.user,

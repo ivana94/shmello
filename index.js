@@ -220,15 +220,15 @@ app.get("/logout", (req, res) => {
 ///////////// GET LOGGED-IN USER INFO AND SEND TO APP COMPONENT ////////////////
 app.get("/user", (req, res) => {
 
-  const id = req.session.user.id;
+    const id = req.session.user.id;
 
-  db.getUserInfo(id).then(user => {
+    db.getUserInfo(id).then(user => {
 
-    db.getUserBoardNames(id).then(boards => {
-        res.json({ user, boards });
+        db.getUserBoardNames(id).then(boards => {
+            res.json({ user, boards });
+        })
+
     })
-
-  })
 
 });
 
