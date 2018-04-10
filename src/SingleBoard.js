@@ -12,11 +12,17 @@ function SingleBoard(props) {
 
     if (!props.boards) return null;
 
+    const idOfBoard = props.match.params.id
+
+    let singleBoard = props.boards.map(item => {
+        if (item.id == idOfBoard) return item.board
+    })
+
 
         return (
 
             <div className = "container">
-                <h1>{ props.boards[0].board }</h1>
+                <h1>{ singleBoard }</h1>
             </div>
 
         ) // END RETURN
@@ -34,9 +40,6 @@ function SingleBoard(props) {
 
 const mapStateToProps = state => {
     return {
-        user: state.user,
-        newBoard: state.newBoard,
-        createBoardIsVisible: state.createBoardIsVisible,
         boards: state.boards
     }
 }

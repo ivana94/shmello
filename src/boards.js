@@ -6,10 +6,6 @@ import CreateBoard from './CreateBoard';
 import { Link } from 'react-router-dom';
 
 
-// import { displayMostRecentUserComment, displayMostRecentAIResponse } from './actions';
-
-
-
 class Boards extends React.Component {
 
     constructor(props) {
