@@ -35,6 +35,14 @@ export default function reducer(state = {}, action) {
     }
 
 
+    // DELETE BOARD FROM REDUX STATE
+    if (action.type == 'DELETE_BOARD') {
+        state = Object.assign({}, state, {
+            boards: state.boards.filter(item => action.idOfBoardToDelete != item.id)
+        });
+    }
+
+
 
     // PUSH USER'S NEWEST COMMENT TO STATE
     if (action.type == 'GET_ALL_BOARD_NAMES') {

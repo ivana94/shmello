@@ -39,7 +39,15 @@ export const allBoardNames = () => {
 // CREATE BOARD & SEND NEW BOARD TO DB AND REDUX STORE
 export const createBoard = newBoard => {
     return axios.post('/createBoard/', { newBoard }).then(newBoard => {
-      console.log("BOARDS from server: ", newBoard);
         return { type: "CREATE_BOARD", newBoard: newBoard.data.boards[0] };
+    });
+};
+
+
+
+// DELETE BOARD
+export const deleteBoard = idOfBoardToDelete => {
+    return axios.post('/delete-board/', { idOfBoardToDelete }).then(({ data }) => {
+        return { type: "DELETE_BOARD", idOfBoardToDelete };
     });
 };
