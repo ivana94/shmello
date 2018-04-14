@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
 import { toggleCreateBoardModal, deleteBoard } from './actions';
+import { Link } from 'react-router-dom';
 import CreateBoard from './CreateBoard';
 
 
@@ -9,7 +10,7 @@ import CreateBoard from './CreateBoard';
 
 function SingleBoard(props) {
     const idOfBoard = props.match.params.id
-    
+
     if (!props.boards) return null;
 
     let nameOfBoard = props.boards.map(item => {
@@ -20,7 +21,7 @@ function SingleBoard(props) {
         return (
 
             <div className = "container">
-                <button onClick = { () => props.onClick(idOfBoard) } className = "delete-board-button">delete this board</button>
+                <Link to = "/" onClick = { () => props.onClick(idOfBoard) } className = "delete-board-button">delete this board</Link>
                 <h1>{ nameOfBoard }</h1>
             </div>
 
@@ -47,6 +48,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onClick: idOfBoard => {
           dispatch(deleteBoard(idOfBoard))
+          location.replace("/")
         }
     }
 }
