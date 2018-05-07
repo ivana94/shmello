@@ -11,6 +11,7 @@ function Nav(props) {
         return (
             <div>
                 <p>{ props.user.first } <span className = "+">+</span></p>
+                <a href = "/logout">logout</a>
             </div>
         ) // END RETURN
 

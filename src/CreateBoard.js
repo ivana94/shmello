@@ -14,9 +14,9 @@ function CreateBoard(props) {
                 <form onSubmit = { e => {
                     e.preventDefault()
                     props.onClick(e)
-                  }}>
-                  <input placeholder = "Add Board Title" name = "board"></input>
-                  <button>Create Board</button>
+                }}>
+                    <input placeholder = "Add Board Title" name = "board"></input>
+                    <button>Create Board</button>
                 </form>
             </div>
         ) // END RETURN

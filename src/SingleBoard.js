@@ -1,33 +1,53 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
-import { toggleCreateBoardModal, deleteBoard } from './actions';
+import { toggleCreateBoardModal, deleteBoard, toggleCreateCard } from './actions';
+import CreateCard from './CreateCard'
 import { Link } from 'react-router-dom';
 import CreateBoard from './CreateBoard';
 
 
 
+class SingleBoard extends React.Component {
 
-function SingleBoard(props) {
-    const idOfBoard = props.match.params.id
+    constructor(props) {
+        super(props)
 
-    if (!props.boards) return null;
+        this.handleClick = this.handleClick.bind(this)
 
-    let nameOfBoard = props.boards.map(item => {
-        if (item.id == idOfBoard) return item.board
-    })
+    }
 
+    handleClick() {
+        console.log("yo");
+    }
 
-        return (
-
-            <div className = "container">
-                <Link to = "/" onClick = { () => props.onClick(idOfBoard) } className = "delete-board-button">delete this board</Link>
-                <h1>{ nameOfBoard }</h1>
-            </div>
-
-        ) // END RETURN
+    render() {
 
 
+        const { createCardModalIsVisible } = this.props
+        const idOfBoard = this.props.match.params.id
+
+        if (!this.props.boards) return null;
+
+        let nameOfBoard = this.props.boards.map(item => {
+            if (item.id == idOfBoard) return item.board
+        })
+
+
+
+            return (
+
+                <div className = "container">
+                    <Link to = "/" onClick = { () => this.props.delete(idOfBoard) } className = "delete-board-button">delete this board</Link>
+                    <h1>{ nameOfBoard }</h1>
+                    <p onClick = { () => this.props.createCard(this.props.createCardModalIsVisible) }>click me for a free console log!</p>
+
+                    { createCardModalIsVisible && <CreateCard /> }
+                </div>
+
+            ) // END RETURN
+
+    }
 
 } // END COMPONENT
 
@@ -40,16 +60,20 @@ function SingleBoard(props) {
 
 const mapStateToProps = state => {
     return {
-        boards: state.boards
+        boards: state.boards,
+        createCardModalIsVisible: state.createCardModalIsVisible
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onClick: idOfBoard => {
+        delete: idOfBoard => {
           dispatch(deleteBoard(idOfBoard))
           location.replace("/")
-        }
+      },
+      createCard: createCardModalIsVisible => {
+          dispatch(toggleCreateCard(createCardModalIsVisible))
+      }
     }
 }
 

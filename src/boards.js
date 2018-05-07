@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from "react-redux";
 import { toggleCreateBoardModal } from './actions';
 import CreateBoard from './CreateBoard';
@@ -19,8 +18,8 @@ class Boards extends React.Component {
 
 
     handleClick() {
-      const { createBoardIsVisible } = this.props
-      this.props.dispatch(toggleCreateBoardModal(createBoardIsVisible))
+        const { createBoardIsVisible } = this.props
+        this.props.dispatch(toggleCreateBoardModal(createBoardIsVisible))
     }
 
 
@@ -44,9 +43,12 @@ class Boards extends React.Component {
 
         if (boards.length) {
             listOfUserBoards = boards.map((elem, id) => (
-                <div className = "current-boards" key = { id } >
-                    <Link to = {`/board/${ elem.id }`}>{ elem.board }</Link>
-                </div>
+                <Link to = {`/board/${ elem.id }`} key = { id }>
+
+                        <div className = "current-boards">
+                            { elem.board }
+                        </div>
+                    </Link>
             ))
         } else {
             listOfUserBoards = (
@@ -69,7 +71,9 @@ class Boards extends React.Component {
             <div className = "container">
                 <p onClick = { this.handleClick }>toggle me!</p>
 
-                { listOfUserBoards }
+                <div className = "boards-container">
+                    { listOfUserBoards }
+                </div>
 
                 { createBoardIsVisible && <CreateBoard /> }
             </div>
