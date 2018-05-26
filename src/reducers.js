@@ -28,11 +28,11 @@ export default function reducer(state = {}, action) {
 
 
     if (action.type == 'CREATE_BOARD') {
-      if (state.boards.length) {
-        state = { ...state, boards: state.boards.concat( action.newBoard ) };
-      } else {
-        state = { ...state, boards: [ action.newBoard ] };
-      }
+        if (state.boards.length) {
+            state = { ...state, boards: state.boards.concat( action.newBoard ) };
+        } else {
+            state = { ...state, boards: [ action.newBoard ] };
+        }
     }
 
 
@@ -48,6 +48,13 @@ export default function reducer(state = {}, action) {
     // PUSH USER'S NEWEST COMMENT TO STATE
     if (action.type == 'GET_ALL_BOARD_NAMES') {
         state = Object.assign({}, state, { boards: action.boards });
+    }
+
+    if (action.type == "ADD_ID_OF_BOARD_TO_STORE") {
+        state = {
+            ...state,
+            idOfCurrentBoard: action.idOfBoard
+        }
     }
 
 
@@ -74,9 +81,25 @@ export default function reducer(state = {}, action) {
 
 
     if (action.type == "SHOW_CREATE_CARD_MODAL") {
-        state = { ...state, createCardModalIsVisible: action.createCardModalIsVisible };
+        state = {
+            ...state,
+            createCardModalIsVisible: action.createCardModalIsVisible,
+            idOfBoard: action.idOfBoard
+        };
     }
 
+
+    if (action.type == "CREATE_CARD") {
+        state = { ...state, card: action.card };
+    }
+
+    if (action.type == 'CREATE_CARD') {
+        if (state.cards) {
+            state = { ...state, cards: state.cards.concat( action.newCard ) };
+        } else {
+            state = { ...state, cards: [ action.newCard ] };
+        }
+    }
 
 
 

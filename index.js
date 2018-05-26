@@ -10,6 +10,8 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 
+const chalk = require('chalk')
+
 // REQUIRE FILE THAT CONTAINS HASH PASSWORD FUNCTION
 const bc = require("./config/pass");
 
@@ -56,6 +58,16 @@ app.use(cookieSession({
 
 
 
+
+
+app.post("/create-card", (req, res) => {
+    const { userId, idOfCurrentBoard, card } = req.body
+    db.createCard(userId, idOfCurrentBoard, card).then(results => {
+        res.json({
+            newCard: results[0]
+        })
+    })
+})
 
 
 

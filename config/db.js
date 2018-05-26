@@ -116,6 +116,22 @@ module.exports.createBoard = (board, id) => {
 
 };
 
+// ADD NEW CARD TO DB
+module.exports.createCard = (user_id, board_id, card) => {
+
+    return db.query(
+
+        `INSERT INTO cards (user_id, board_id, card) VALUES ($1, $2, $3) RETURNING *`,
+        [user_id, board_id, card]
+
+    ).then((results) => {
+        return results.rows;
+    }).catch(err => {
+        console.log(err);
+    });
+
+};
+
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////// END ADD TO DATABASE /////////////////////////////
@@ -147,7 +163,7 @@ module.exports.deleteBoard = id => {
         [ id ]
 
     )
-    
+
 };
 
 

@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 
 
 
-function CreateCard() {
+function CreateCard(props) {
 
             return (
 
                 <div>
                     <form onSubmit = { e => {
                         e.preventDefault()
-                        props.onCardClick(e)
+                        props.onCardClick(e, props.idOfCurrentBoard, props.userId)
                     }}>
                         <input placeholder = "Add Card" name = "card"></input>
                         <button>Create Card</button>
@@ -26,14 +26,21 @@ function CreateCard() {
 } // END COMPONENT
 
 
+const mapStateToProps = state => {
+    return {
+        idOfCurrentBoard: state.idOfCurrentBoard,
+        userId: state.user.id,
+    }
+}
+
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCardClick: e => {
-            dispatch(createCard(e.target.querySelector('input[name="card"]').value))
+        onCardClick: (e, idOfCurrentBoard, userId) => {
+            dispatch(createCard(e.target.querySelector('input[name="card"]').value, idOfCurrentBoard, userId))
         }
     }
 }
 
 
-export default connect(null, mapDispatchToProps)(CreateCard);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateCard);
