@@ -22,6 +22,12 @@ class SingleBoard extends React.Component {
         super(props)
     }
 
+    componentWillMount(newProps) {
+        console.log("NEW PROPS :", newProps);
+        const idOfBoard = this.props.match.params.id
+        this.props.addIdAndCardsOfBoardToStore(idOfBoard)
+    }
+
     componentDidMount() {
         const idOfBoard = this.props.match.params.id
         this.props.addIdAndCardsOfBoardToStore(idOfBoard)

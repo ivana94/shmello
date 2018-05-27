@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 
 function Cards(props) {
 
+    if (!props.cards) return <div className = "loading"></div>
+
     const listOfCards = props.cards.map(card => {
         return (
             <div className = "card" key = { card.id }>
@@ -17,7 +19,7 @@ function Cards(props) {
 
             return (
 
-                <div>
+                <div className = "cards">
                     { listOfCards }
                 </div>
 

@@ -48,3 +48,21 @@ div.boards-container > a:hover {
     background-color: violet;
     cursor: pointer;
 }
+
+
+/* STYLING CARDS */
+div.cards {
+
+    /* CARD POSITIONING */
+    display: flex;
+    flex-direction: row;
+
+}
+
+div.card {
+    margin: 0 10px;
+    border-radius: 2px;
+    background: coral;
+    height: 100px;
+    width: 100px;
+}
