@@ -58,11 +58,16 @@ export const deleteBoard = idOfBoardToDelete => {
     });
 };
 
-export const addIdOfBoardToStore = idOfBoard => {
-    return {
-        type: "ADD_ID_OF_BOARD_TO_STORE",
-        idOfBoard
-    }
+export const addIdAndCardsOfBoardToStore = idOfBoard => {
+
+    return axios.post("/get-cards", {idOfBoard}).then(({ data }) => {
+        console.log("DATA: ", data);
+        return {
+            type: "ADD_ID_AND_CARDS_OF_BOARD_TO_STORE",
+            idOfBoard,
+            cards: data.cards
+        }
+    })
 }
 
 
@@ -95,8 +100,7 @@ export const toggleCreateCard = createCardModalIsVisible => {
 };
 
 
-export const createCard = (card, idOfCurrentBoard, userId) => {
-
+export const createCard = (card, idOfCurrentBoard, userId, createCardModalIsVisible) => {
 
     const data = {
         card,
@@ -104,11 +108,11 @@ export const createCard = (card, idOfCurrentBoard, userId) => {
         userId
     }
 
-
     return axios.post("/create-card", data).then(({ data }) => {
         return {
             type: "CREATE_CARD",
-            newCard: data.newCard
+            newCard: data.newCard,
+            createCardModalIsVisible: !createCardModalIsVisible
         };
     })
 

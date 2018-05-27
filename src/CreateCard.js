@@ -12,7 +12,7 @@ function CreateCard(props) {
                 <div>
                     <form onSubmit = { e => {
                         e.preventDefault()
-                        props.onCardClick(e, props.idOfCurrentBoard, props.userId)
+                        props.onCardClick(e, props.idOfCurrentBoard, props.userId, props.createCardModalIsVisible)
                     }}>
                         <input placeholder = "Add Card" name = "card"></input>
                         <button>Create Card</button>
@@ -30,14 +30,15 @@ const mapStateToProps = state => {
     return {
         idOfCurrentBoard: state.idOfCurrentBoard,
         userId: state.user.id,
+        createCardModalIsVisible: state.createCardModalIsVisible
     }
 }
 
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCardClick: (e, idOfCurrentBoard, userId) => {
-            dispatch(createCard(e.target.querySelector('input[name="card"]').value, idOfCurrentBoard, userId))
+        onCardClick: (e, idOfCurrentBoard, userId, createCardModalIsVisible) => {
+            dispatch(createCard(e.target.querySelector('input[name="card"]').value, idOfCurrentBoard, userId, createCardModalIsVisible))
         }
     }
 }

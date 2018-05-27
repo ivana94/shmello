@@ -50,10 +50,11 @@ export default function reducer(state = {}, action) {
         state = Object.assign({}, state, { boards: action.boards });
     }
 
-    if (action.type == "ADD_ID_OF_BOARD_TO_STORE") {
+    if (action.type == "ADD_ID_AND_CARDS_OF_BOARD_TO_STORE") {
         state = {
             ...state,
-            idOfCurrentBoard: action.idOfBoard
+            idOfCurrentBoard: action.idOfBoard,
+            cards: action.cards
         }
     }
 
@@ -89,15 +90,23 @@ export default function reducer(state = {}, action) {
     }
 
 
-    if (action.type == "CREATE_CARD") {
-        state = { ...state, card: action.card };
-    }
+    // if (action.type == "CREATE_CARD") {
+    //     state = { ...state, card: action.card };
+    // }
 
     if (action.type == 'CREATE_CARD') {
         if (state.cards) {
-            state = { ...state, cards: state.cards.concat( action.newCard ) };
+            state = {
+                ...state,
+                cards: state.cards.concat( action.newCard ),
+                createCardModalIsVisible: action.createCardModalIsVisible
+            };
         } else {
-            state = { ...state, cards: [ action.newCard ] };
+            state = {
+                ...state,
+                cards: [ action.newCard ],
+                 createCardModalIsVisible: action.createCardModalIsVisible
+            };
         }
     }
 

@@ -72,6 +72,22 @@ module.exports.getUserBoardNames = (id) => {
 
 };
 
+// GET NAMES OF ALL BOARDS ASSOCIATED WITHL LOGGED IN USER
+module.exports.getCards = (userId, boardId) => {
+
+    return db.query(
+
+        `SELECT * FROM cards WHERE user_id = $1 AND board_id = $2`,
+        [ userId, boardId ]
+
+    ).then((results) => {
+        return results.rows;
+    }).catch(err => {
+        console.log(err);
+    });
+
+};
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////// END RETRIEVE FROM DATABASE //////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

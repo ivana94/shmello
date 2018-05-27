@@ -57,6 +57,21 @@ app.use(cookieSession({
 
 
 
+app.post('/get-cards', (req, res) => {
+
+    const { idOfBoard } = req.body
+    const userId = req.session.user.id;
+
+    db.getCards(userId, idOfBoard).then(results => {
+
+        res.json({
+            cards: results
+        })
+        
+    })
+})
+
+
 
 
 

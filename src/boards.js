@@ -33,11 +33,13 @@ class Boards extends React.Component {
         let board;
         let listOfUserBoards;
 
+
         const { user, newBoard, createBoardIsVisible, boards } = this.props;
+
 
         if (!user) {
             return (
-                <div className = "loading" >Loading...</div>
+                <div className = "loading" ></div>
             );
         }
 

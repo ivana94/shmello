@@ -1,13 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
+
 import {
     toggleCreateBoardModal,
     deleteBoard,
     toggleCreateCard,
-    addIdOfBoardToStore
+    addIdAndCardsOfBoardToStore
 } from './actions';
+
 import CreateCard from './CreateCard'
+import Cards from './Cards'
 import { Link } from 'react-router-dom';
 import CreateBoard from './CreateBoard';
 
@@ -21,7 +24,7 @@ class SingleBoard extends React.Component {
 
     componentDidMount() {
         const idOfBoard = this.props.match.params.id
-        this.props.addIdOfBoardToStore(idOfBoard)
+        this.props.addIdAndCardsOfBoardToStore(idOfBoard)
     }
 
 
@@ -47,6 +50,7 @@ class SingleBoard extends React.Component {
                     <h1>{ nameOfBoard }</h1>
                     <p onClick = { () => this.props.toggleCreateCardModal(this.props.createCardModalIsVisible) }>click me for a free console log!</p>
 
+                    <Cards />
                     { createCardModalIsVisible && <CreateCard /> }
                 </div>
 
@@ -72,16 +76,20 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+
         delete: idOfBoard => {
-          dispatch(deleteBoard(idOfBoard))
-          location.replace("/")
-      },
-      toggleCreateCardModal: createCardModalIsVisible => {
-          dispatch(toggleCreateCard(createCardModalIsVisible))
-      },
-      addIdOfBoardToStore: idOfBoard => {
-          dispatch(addIdOfBoardToStore(idOfBoard))
-      }
+            dispatch(deleteBoard(idOfBoard))
+            location.replace("/")
+        },
+
+        toggleCreateCardModal: createCardModalIsVisible => {
+            dispatch(toggleCreateCard(createCardModalIsVisible))
+        },
+
+        addIdAndCardsOfBoardToStore: idOfBoard => {
+            dispatch(addIdAndCardsOfBoardToStore(idOfBoard))
+        }
+
     }
 }
 
