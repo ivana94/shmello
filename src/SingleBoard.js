@@ -1,18 +1,19 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from "react-redux";
 
 import {
     toggleCreateBoardModal,
     deleteBoard,
     toggleCreateCard,
-    addIdAndCardsOfBoardToStore
+    addIdAndCardsOfBoardToStore,
+    toggleCreateList
 } from './actions';
 
 import CreateCard from './CreateCard'
 import Cards from './Cards'
 import { Link } from 'react-router-dom';
 import CreateBoard from './CreateBoard';
+import List from './List';
 
 
 
@@ -22,11 +23,11 @@ class SingleBoard extends React.Component {
         super(props)
     }
 
-    componentWillMount(newProps) {
-        console.log("NEW PROPS :", newProps);
-        const idOfBoard = this.props.match.params.id
-        this.props.addIdAndCardsOfBoardToStore(idOfBoard)
-    }
+    // componentWillMount(newProps) {
+    //     console.log("NEW PROPS :", newProps);
+    //     const idOfBoard = this.props.match.params.id
+    //     this.props.addIdAndCardsOfBoardToStore(idOfBoard)
+    // }
 
     componentDidMount() {
         const idOfBoard = this.props.match.params.id
@@ -38,7 +39,7 @@ class SingleBoard extends React.Component {
     render() {
 
 
-        const { createCardModalIsVisible } = this.props
+        const { createCardModalIsVisible, createListModalIsVisible, toggleCreateCardModal, toggleCreateListModal } = this.props
         const idOfBoard = this.props.match.params.id
 
         if (!this.props.boards) return null;
@@ -54,9 +55,11 @@ class SingleBoard extends React.Component {
                 <div className = "container">
                     <Link to = "/" onClick = { () => this.props.delete(idOfBoard) } className = "delete-board-button">delete this board</Link>
                     <h1>{ nameOfBoard }</h1>
-                    <p onClick = { () => this.props.toggleCreateCardModal(this.props.createCardModalIsVisible) }>click me for a free console log!</p>
+                    <p onClick = { () => toggleCreateCardModal(createCardModalIsVisible) }>click to create card</p>
+                    <p onClick = { () => toggleCreateListModal(createListModalIsVisible) }>click to create list</p>
 
                     <Cards />
+                    { createListModalIsVisible && <List />}
                     { createCardModalIsVisible && <CreateCard /> }
                 </div>
 
@@ -76,7 +79,8 @@ class SingleBoard extends React.Component {
 const mapStateToProps = state => {
     return {
         boards: state.boards,
-        createCardModalIsVisible: state.createCardModalIsVisible
+        createCardModalIsVisible: state.createCardModalIsVisible,
+        createListModalIsVisible: state.createListModalIsVisible
     }
 }
 
@@ -90,6 +94,10 @@ const mapDispatchToProps = dispatch => {
 
         toggleCreateCardModal: createCardModalIsVisible => {
             dispatch(toggleCreateCard(createCardModalIsVisible))
+        },
+
+        toggleCreateListModal: createListModalIsVisible => {
+            dispatch(toggleCreateList(createListModalIsVisible))
         },
 
         addIdAndCardsOfBoardToStore: idOfBoard => {

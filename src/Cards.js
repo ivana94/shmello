@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from "react-redux";
-// import { createCard } from './actions';
-// import { Link } from 'react-router-dom';
 
 
 
@@ -31,6 +29,7 @@ function Cards(props) {
 
 
 const mapStateToProps = state => {
+    console.log(state);
     return {
         cards: state.cards
     }

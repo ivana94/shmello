@@ -28,14 +28,10 @@ class Boards extends React.Component {
 
     render() {
 
-
-
         let board;
         let listOfUserBoards;
 
-
         const { user, newBoard, createBoardIsVisible, boards } = this.props;
-
 
         if (!user) {
             return (

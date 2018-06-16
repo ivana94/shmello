@@ -13,6 +13,7 @@ export default function reducer(state = {}, action) {
             user: action.user,
             createBoardIsVisible: action.createBoardIsVisible,
             createCardModalIsVisible: action.createCardModalIsVisible,
+            createListModalIsVisible: action.createListModalIsVisible,
             boards: action.boards
          };
     }
@@ -108,6 +109,17 @@ export default function reducer(state = {}, action) {
                  createCardModalIsVisible: action.createCardModalIsVisible
             };
         }
+    }
+
+
+
+
+
+    if (action.type == "SHOW_CREATE_LIST_MODAL") {
+        state = {
+            ...state,
+            createListModalIsVisible: action.createListModalIsVisible
+        };
     }
 
 

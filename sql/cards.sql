@@ -4,6 +4,7 @@ CREATE TABLE cards(
     id SERIAL PRIMARY KEY UNIQUE,
     user_id INTEGER REFERENCES users(id),
     board_id INTEGER REFERENCES boards(id),
+    list_id INTEGER REFERENCES list(id),
     card VARCHAR(300) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
