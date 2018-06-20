@@ -69,6 +69,8 @@ class Boards extends React.Component {
             <div className = "container">
                 <p onClick = { this.handleClick }>toggle me!</p>
 
+                <div className = "sidebar"></div>
+
                 <div className = "boards-container">
                     { listOfUserBoards }
                 </div>
