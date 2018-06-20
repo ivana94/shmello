@@ -10,6 +10,8 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 
+const chalk = require('chalk')
+
 // REQUIRE FILE THAT CONTAINS HASH PASSWORD FUNCTION
 const bc = require("./config/pass");
 
@@ -55,6 +57,47 @@ app.use(cookieSession({
 
 
 
+app.post('/get-cards', (req, res) => {
+
+    const { idOfBoard } = req.body
+    const userId = req.session.user.id;
+
+    db.getCards(userId, idOfBoard).then(results => {
+
+        res.json({
+            cards: results
+        })
+        
+    })
+})
+
+
+
+
+
+app.post("/create-card", (req, res) => {
+    const { userId, idOfCurrentBoard, card } = req.body
+    db.createCard(userId, idOfCurrentBoard, card).then(results => {
+        res.json({
+            newCard: results[0]
+        })
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -65,7 +108,7 @@ app.use(cookieSession({
 
 
 ////////////////////////////////////////////////////////////////////////////////
-///////////////////////////// GET / CREATE BOARDS  /////////////////////////////
+///////////////////////// GET / CREATE / DELETE BOARDS  ////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 app.get('/allBoardNamesFromDatabase/', (req, res) => {
 
@@ -91,8 +134,16 @@ app.post('/createBoard/', (req, res) => {
 
 });
 
+
+app.post('/delete-board', (req, res) => {
+    const idOfBoardToDelete = req.body.idOfBoardToDelete
+    db.deleteBoard(idOfBoardToDelete).then(() => {
+        res.json({ success: true })
+    })
+})
+
 ////////////////////////////////////////////////////////////////////////////////
-/////////////////////////// END GET / CREATE BOARDS  ///////////////////////////
+/////////////////////// END GET / CREATE / DELTE BOARDS  ///////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 

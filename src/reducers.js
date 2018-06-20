@@ -3,7 +3,7 @@ import React from 'react';
 export default function reducer(state = {}, action) {
 
 ////////////////////////////////////////////////////////////////////////////////
-/////////////////////////// FRIEND COMPONENT REDUCERS //////////////////////////
+///////////////////////////////// BOARD REDUCERS ///////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
     // PUT LOGGED IN USER INFO INTO REDUX STORE
@@ -12,6 +12,8 @@ export default function reducer(state = {}, action) {
             ...state,
             user: action.user,
             createBoardIsVisible: action.createBoardIsVisible,
+            createCardModalIsVisible: action.createCardModalIsVisible,
+            createListModalIsVisible: action.createListModalIsVisible,
             boards: action.boards
          };
     }
@@ -27,11 +29,19 @@ export default function reducer(state = {}, action) {
 
 
     if (action.type == 'CREATE_BOARD') {
-      if (state.boards.length) {
-        state = { ...state, boards: state.boards.concat( action.newBoard ) };
-      } else {
-        state = { ...state, boards: [ action.newBoard ] };
-      }
+        if (state.boards.length) {
+            state = { ...state, boards: state.boards.concat( action.newBoard ) };
+        } else {
+            state = { ...state, boards: [ action.newBoard ] };
+        }
+    }
+
+
+    // DELETE BOARD FROM REDUX STATE
+    if (action.type == 'DELETE_BOARD') {
+        state = Object.assign({}, state, {
+            boards: state.boards.filter(item => action.idOfBoardToDelete != item.id)
+        });
     }
 
 
@@ -41,7 +51,82 @@ export default function reducer(state = {}, action) {
         state = Object.assign({}, state, { boards: action.boards });
     }
 
+    if (action.type == "ADD_ID_AND_CARDS_OF_BOARD_TO_STORE") {
+        state = {
+            ...state,
+            idOfCurrentBoard: action.idOfBoard,
+            cards: action.cards
+        }
+    }
 
+
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////// END BOARD //////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////// CARD REDUCERS ////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    if (action.type == "SHOW_CREATE_CARD_MODAL") {
+        state = {
+            ...state,
+            createCardModalIsVisible: action.createCardModalIsVisible,
+            idOfBoard: action.idOfBoard
+        };
+    }
+
+
+    // if (action.type == "CREATE_CARD") {
+    //     state = { ...state, card: action.card };
+    // }
+
+    if (action.type == 'CREATE_CARD') {
+        if (state.cards) {
+            state = {
+                ...state,
+                cards: state.cards.concat( action.newCard ),
+                createCardModalIsVisible: action.createCardModalIsVisible
+            };
+        } else {
+            state = {
+                ...state,
+                cards: [ action.newCard ],
+                 createCardModalIsVisible: action.createCardModalIsVisible
+            };
+        }
+    }
+
+
+
+
+
+    if (action.type == "SHOW_CREATE_LIST_MODAL") {
+        state = {
+            ...state,
+            createListModalIsVisible: action.createListModalIsVisible
+        };
+    }
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// END CARD REDUCERS //////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
 

@@ -3,6 +3,11 @@ import axios from 'axios';
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////// BOARDS /////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
 
 // GET USER INFO AND PUT IN REDUX STORE
 export const userInfo = () => {
@@ -11,6 +16,8 @@ export const userInfo = () => {
           type: "GET_USER_INFO",
           user: data.user,
           createBoardIsVisible: false,
+          createCardModalIsVisible: false,
+          createListModalIsVisible: false,
           boards: data.boards
          };
     });
@@ -19,10 +26,10 @@ export const userInfo = () => {
 
 // TOGGLE THE CREATE BOARD MODAL ON CLICK
 export const toggleCreateBoardModal = createBoardIsVisible => {
-  return {
-    type: "SHOW_CREATE_BOARD_MODAL",
-    createBoardIsVisible: !createBoardIsVisible
-  };
+    return {
+        type: "SHOW_CREATE_BOARD_MODAL",
+        createBoardIsVisible: !createBoardIsVisible
+    };
 };
 
 
@@ -39,7 +46,113 @@ export const allBoardNames = () => {
 // CREATE BOARD & SEND NEW BOARD TO DB AND REDUX STORE
 export const createBoard = newBoard => {
     return axios.post('/createBoard/', { newBoard }).then(newBoard => {
-      console.log("BOARDS from server: ", newBoard);
         return { type: "CREATE_BOARD", newBoard: newBoard.data.boards[0] };
     });
+};
+
+
+
+// DELETE BOARD
+export const deleteBoard = idOfBoardToDelete => {
+    return axios.post('/delete-board/', { idOfBoardToDelete }).then(({ data }) => {
+        return { type: "DELETE_BOARD", idOfBoardToDelete };
+    });
+};
+
+export const addIdAndCardsOfBoardToStore = idOfBoard => {
+
+    return axios.post("/get-cards", {idOfBoard}).then(({ data }) => {
+
+        return {
+            type: "ADD_ID_AND_CARDS_OF_BOARD_TO_STORE",
+            idOfBoard,
+            cards: data.cards
+        }
+    })
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////// END BOARDS ///////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////// CARDS //////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// TOGGLE THE ADD CARD MODAL ON CLICK
+export const toggleCreateCard = createCardModalIsVisible => {
+
+    return {
+        type: "SHOW_CREATE_CARD_MODAL",
+        createCardModalIsVisible: !createCardModalIsVisible,
+    };
+
+};
+
+
+export const createCard = (card, idOfCurrentBoard, userId, createCardModalIsVisible) => {
+
+    const data = {
+        card,
+        idOfCurrentBoard,
+        userId
+    }
+
+    return axios.post("/create-card", data).then(({ data }) => {
+        return {
+            type: "CREATE_CARD",
+            newCard: data.newCard,
+            createCardModalIsVisible: !createCardModalIsVisible
+        };
+    })
+};
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////// END CARDS ////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////// LIST ///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// TOGGLE THE ADD CARD MODAL ON CLICK
+export const toggleCreateList = createListModalIsVisible => {
+
+    return {
+        type: "SHOW_CREATE_LIST_MODAL",
+        createListModalIsVisible: !createListModalIsVisible,
+    };
+
 };

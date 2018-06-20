@@ -1,27 +1,67 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from "react-redux";
-import { toggleCreateBoardModal } from './actions';
+
+import {
+    toggleCreateBoardModal,
+    deleteBoard,
+    toggleCreateCard,
+    addIdAndCardsOfBoardToStore,
+    toggleCreateList
+} from './actions';
+
+import CreateCard from './CreateCard'
+import Cards from './Cards'
+import { Link } from 'react-router-dom';
 import CreateBoard from './CreateBoard';
+import List from './List';
 
 
 
+class SingleBoard extends React.Component {
 
-function SingleBoard(props) {
-
-
-    if (!props.boards) return null;
-
-
-        return (
-
-            <div className = "container">
-                <h1>{ props.boards[0].board }</h1>
-            </div>
-
-        ) // END RETURN
+    constructor(props) {
+        super(props)
+    }
 
 
+
+    componentDidMount() {
+        const idOfBoard = this.props.match.params.id
+        this.props.addIdAndCardsOfBoardToStore(idOfBoard)
+    }
+
+
+
+    render() {
+
+
+        const { createCardModalIsVisible, createListModalIsVisible, toggleCreateCardModal, toggleCreateListModal } = this.props
+        const idOfBoard = this.props.match.params.id
+
+        if (!this.props.boards) return null;
+
+        let nameOfBoard = this.props.boards.map(item => {
+            if (item.id == idOfBoard) return item.board
+        })
+
+
+
+            return (
+
+                <div className = "container">
+                    <Link to = "/" onClick = { () => this.props.delete(idOfBoard) } className = "delete-board-button">delete this board</Link>
+                    <h1>{ nameOfBoard }</h1>
+                    <p onClick = { () => toggleCreateCardModal(createCardModalIsVisible) }>click to create card</p>
+                    <p onClick = { () => toggleCreateListModal(createListModalIsVisible) }>click to create list</p>
+
+                    <Cards />
+                    { createListModalIsVisible && <List />}
+                    { createCardModalIsVisible && <CreateCard /> }
+                </div>
+
+            ) // END RETURN
+
+    }
 
 } // END COMPONENT
 
@@ -34,11 +74,33 @@ function SingleBoard(props) {
 
 const mapStateToProps = state => {
     return {
-        user: state.user,
-        newBoard: state.newBoard,
-        createBoardIsVisible: state.createBoardIsVisible,
-        boards: state.boards
+        boards: state.boards,
+        createCardModalIsVisible: state.createCardModalIsVisible,
+        createListModalIsVisible: state.createListModalIsVisible
     }
 }
 
-export default connect(mapStateToProps)(SingleBoard);
+const mapDispatchToProps = dispatch => {
+    return {
+
+        delete: idOfBoard => {
+            dispatch(deleteBoard(idOfBoard))
+            location.replace("/")
+        },
+
+        toggleCreateCardModal: createCardModalIsVisible => {
+            dispatch(toggleCreateCard(createCardModalIsVisible))
+        },
+
+        toggleCreateListModal: createListModalIsVisible => {
+            dispatch(toggleCreateList(createListModalIsVisible))
+        },
+
+        addIdAndCardsOfBoardToStore: idOfBoard => {
+            dispatch(addIdAndCardsOfBoardToStore(idOfBoard))
+        }
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleBoard);
