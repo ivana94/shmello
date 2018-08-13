@@ -67,7 +67,7 @@ app.post('/get-cards', (req, res) => {
         res.json({
             cards: results
         })
-        
+
     })
 })
 
@@ -137,6 +137,7 @@ app.post('/createBoard/', (req, res) => {
 
 app.post('/delete-board', (req, res) => {
     const idOfBoardToDelete = req.body.idOfBoardToDelete
+    console.log("server: ", idOfBoardToDelete);
     db.deleteBoard(idOfBoardToDelete).then(() => {
         res.json({ success: true })
     })

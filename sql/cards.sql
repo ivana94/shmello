@@ -2,9 +2,9 @@ DROP TABLE IF EXISTS cards;
 
 CREATE TABLE cards(
     id SERIAL PRIMARY KEY UNIQUE,
-    user_id INTEGER REFERENCES users(id),
-    board_id INTEGER REFERENCES boards(id),
-    list_id INTEGER REFERENCES list(id),
+    user_id INTEGER,
+    board_id INTEGER,
+    list_id INTEGER,
     card VARCHAR(300) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

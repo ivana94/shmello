@@ -29,7 +29,6 @@ function Cards(props) {
 
 
 const mapStateToProps = state => {
-    console.log(state);
     return {
         cards: state.cards
     }

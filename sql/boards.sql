@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS boards;
 
 CREATE TABLE boards(
     id SERIAL PRIMARY KEY UNIQUE,
-    user_id INTEGER REFERENCES users(id),
+    user_id INTEGER,
     board VARCHAR(300) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
