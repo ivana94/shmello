@@ -149,6 +149,23 @@ module.exports.createCard = (user_id, board_id, card) => {
 };
 
 
+// ADD NEW LIST TO DB
+module.exports.createList = (board_id, list) => {
+
+    return db.query(
+
+        `INSERT INTO list (board_id, list) VALUES ($1, $2) RETURNING *`,
+        [board_id, list]
+
+    ).then((results) => {
+        return results.rows[0];
+    }).catch(err => {
+        console.log(err);
+    });
+
+};
+
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////// END ADD TO DATABASE /////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

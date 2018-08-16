@@ -133,3 +133,13 @@ div.card {
     height: 100px;
     width: 100px;
 }
+
+
+/* STYLING LISTS */
+div.list {
+    background: gray;
+    display: inline-block;
+    margin: 1rem 2rem;
+    height: 80vh;
+    padding: 1%;
+}

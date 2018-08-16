@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 
 import {
     toggleCreateBoardModal,
@@ -11,9 +12,9 @@ import {
 
 import CreateCard from './CreateCard'
 import Cards from './Cards'
-import { Link } from 'react-router-dom';
 import CreateBoard from './CreateBoard';
-import List from './List';
+import CreateList from './CreateList';
+import Lists from './Lists';
 
 
 
@@ -51,12 +52,11 @@ class SingleBoard extends React.Component {
                 <div className = "container">
                     <Link to = "/" onClick = { () => this.props.delete(idOfBoard) } className = "delete-board-button">delete this board</Link>
                     <h1>{ nameOfBoard }</h1>
-                    <p onClick = { () => toggleCreateCardModal(createCardModalIsVisible) }>click to create card</p>
                     <p onClick = { () => toggleCreateListModal(createListModalIsVisible) }>click to create list</p>
 
                     <Cards />
-                    { createListModalIsVisible && <List />}
-                    { createCardModalIsVisible && <CreateCard /> }
+                    <Lists />
+                    { createListModalIsVisible && <CreateList />}
                 </div>
 
             ) // END RETURN
@@ -86,10 +86,6 @@ const mapDispatchToProps = dispatch => {
         delete: idOfBoard => {
             dispatch(deleteBoard(idOfBoard))
             location.replace("/")
-        },
-
-        toggleCreateCardModal: createCardModalIsVisible => {
-            dispatch(toggleCreateCard(createCardModalIsVisible))
         },
 
         toggleCreateListModal: createListModalIsVisible => {

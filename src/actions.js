@@ -90,16 +90,6 @@ export const addIdAndCardsOfBoardToStore = idOfBoard => {
 ////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////// CARDS //////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-// TOGGLE THE ADD CARD MODAL ON CLICK
-export const toggleCreateCard = createCardModalIsVisible => {
-
-    return {
-        type: "SHOW_CREATE_CARD_MODAL",
-        createCardModalIsVisible: !createCardModalIsVisible,
-    };
-
-};
-
 
 export const createCard = (card, idOfCurrentBoard, userId, createCardModalIsVisible) => {
 
@@ -153,6 +143,24 @@ export const toggleCreateList = createListModalIsVisible => {
     return {
         type: "SHOW_CREATE_LIST_MODAL",
         createListModalIsVisible: !createListModalIsVisible,
+    };
+
+};
+
+
+export const createList = async (list, idOfCurrentBoard, createListModalIsVisible) => {
+    let data = {
+        list,
+        idOfCurrentBoard
+    }
+
+    let resp = await axios.post("/create-list", data)
+    let newList = resp.data.results
+
+    return {
+        type: "CREATE_LIST",
+        createListModalIsVisible: !createListModalIsVisible,
+        newList
     };
 
 };

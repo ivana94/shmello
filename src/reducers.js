@@ -79,22 +79,6 @@ export default function reducer(state = {}, action) {
 ///////////////////////////////// CARD REDUCERS ////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-    if (action.type == "SHOW_CREATE_CARD_MODAL") {
-        state = {
-            ...state,
-            createCardModalIsVisible: action.createCardModalIsVisible,
-            idOfBoard: action.idOfBoard
-        };
-    }
-
-
-    // if (action.type == "CREATE_CARD") {
-    //     state = { ...state, card: action.card };
-    // }
-
     if (action.type == 'CREATE_CARD') {
         if (state.cards) {
             state = {
@@ -133,8 +117,34 @@ export default function reducer(state = {}, action) {
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////// LIST REDUCERS ////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+    if (action.type == 'CREATE_LIST') {
+        if (state.lists) {
+            state = {
+                ...state,
+                lists: state.lists.concat( action.newList ),
+                createListModalIsVisible: action.createListModalIsVisible
+            };
+        } else {
+            state = {
+                ...state,
+                lists: [ action.newList ],
+                 createListModalIsVisible: action.createListModalIsVisible
+            };
+        }
+    }
 
-    console.log("I AM STATE IN REDUCER: ", state);
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// END LIST REDUCERS //////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
+
     return state;
 
 }

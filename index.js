@@ -90,7 +90,23 @@ app.post("/create-card", (req, res) => {
 
 
 
+app.post('/create-list', (req, res) => {
+    const { idOfCurrentBoard, list } = req.body
+    db.createList(idOfCurrentBoard, list)
 
+
+        .then(results => {
+            res.json({
+                results
+            })
+        })
+
+        .catch(err => {
+            console.log("err in /create-list: ", err);
+        })
+
+
+})
 
 
 
