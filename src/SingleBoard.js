@@ -11,7 +11,6 @@ import {
 } from './actions';
 
 import CreateCard from './CreateCard'
-import Cards from './Cards'
 import CreateBoard from './CreateBoard';
 import CreateList from './CreateList';
 import Lists from './Lists';
@@ -54,7 +53,6 @@ class SingleBoard extends React.Component {
                     <h1>{ nameOfBoard }</h1>
                     <p onClick = { () => toggleCreateListModal(createListModalIsVisible) }>click to create list</p>
 
-                    <Cards />
                     <Lists />
                     { createListModalIsVisible && <CreateList />}
                 </div>

@@ -17,7 +17,19 @@ function Lists(props) {
                     return (
                         <div className = "list" key = { list.id }>
                             <p>{list.list}</p>
-                            <CreateCard />
+                            <CreateCard
+                                listId = { list.id }
+                            />
+                        { props.cards && props.cards.map(card => {
+                                if (list.id === card.list_id) {
+                                    return (
+                                        <div className = "card" key = { card.id }>
+                                            <p>{ card.card }</p>
+                                        </div>
+                                    )
+                                }
+                            })
+                        }
                         </div>
                     )
                 })
@@ -40,7 +52,8 @@ const mapStateToProps = state => {
     return {
         createListModalIsVisible: state.createListModalIsVisible,
         idOfCurrentBoard: state.idOfCurrentBoard,
-        lists: state.lists
+        lists: state.lists,
+        cards: state.cards,
     }
 }
 

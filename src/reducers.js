@@ -55,7 +55,8 @@ export default function reducer(state = {}, action) {
         state = {
             ...state,
             idOfCurrentBoard: action.idOfBoard,
-            cards: action.cards
+            cards: action.cards,
+            lists: action.lists
         }
     }
 
@@ -83,7 +84,7 @@ export default function reducer(state = {}, action) {
         if (state.cards) {
             state = {
                 ...state,
-                cards: state.cards.concat( action.newCard ),
+                cards: state.cards.concat(action.newCard),
                 createCardModalIsVisible: action.createCardModalIsVisible
             };
         } else {

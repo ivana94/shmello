@@ -62,11 +62,19 @@ app.post('/get-cards', (req, res) => {
     const { idOfBoard } = req.body
     const userId = req.session.user.id;
 
-    db.getCards(userId, idOfBoard).then(results => {
+    db.getCards(userId, idOfBoard).then(cards => {
 
-        res.json({
-            cards: results
+        db.getLists(idOfBoard).then(lists => {
+
+            console.log("lists: ", lists);
+
+            res.json({
+                cards,
+                lists
+            })
+
         })
+
 
     })
 })
@@ -76,8 +84,8 @@ app.post('/get-cards', (req, res) => {
 
 
 app.post("/create-card", (req, res) => {
-    const { userId, idOfCurrentBoard, card } = req.body
-    db.createCard(userId, idOfCurrentBoard, card).then(results => {
+    const { userId, idOfCurrentBoard, card, listId } = req.body
+    db.createCard(userId, idOfCurrentBoard, card, listId).then(results => {
         res.json({
             newCard: results[0]
         })
@@ -205,11 +213,9 @@ app.post("/register", (req, res) => {
             res.json({ results, success: true });
 
         }).catch(err => {
-          console.log("error 1");
             res.json({ success: false });
         });
     }).catch(err => {
-      console.log("error 1");
         res.json({ success: false });
     });
 

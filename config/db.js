@@ -72,13 +72,27 @@ module.exports.getUserBoardNames = (id) => {
 
 };
 
-// GET NAMES OF ALL BOARDS ASSOCIATED WITHL LOGGED IN USER
 module.exports.getCards = (userId, boardId) => {
 
     return db.query(
 
         `SELECT * FROM cards WHERE user_id = $1 AND board_id = $2`,
         [ userId, boardId ]
+
+    ).then((results) => {
+        return results.rows;
+    }).catch(err => {
+        console.log(err);
+    });
+
+};
+
+module.exports.getLists = (boardId) => {
+
+    return db.query(
+
+        `SELECT * FROM list WHERE board_id = $1`,
+        [ boardId ]
 
     ).then((results) => {
         return results.rows;
@@ -133,12 +147,12 @@ module.exports.createBoard = (board, id) => {
 };
 
 // ADD NEW CARD TO DB
-module.exports.createCard = (user_id, board_id, card) => {
+module.exports.createCard = (user_id, board_id, card, listId) => {
 
     return db.query(
 
-        `INSERT INTO cards (user_id, board_id, card) VALUES ($1, $2, $3) RETURNING *`,
-        [user_id, board_id, card]
+        `INSERT INTO cards (user_id, board_id, card, list_id) VALUES ($1, $2, $3, $4) RETURNING *`,
+        [ user_id, board_id, card, listId ]
 
     ).then((results) => {
         return results.rows;

@@ -19,7 +19,7 @@ export const userInfo = () => {
           createCardModalIsVisible: false,
           createListModalIsVisible: false,
           boards: data.boards
-         };
+      };
     });
 };
 
@@ -66,7 +66,8 @@ export const addIdAndCardsOfBoardToStore = idOfBoard => {
         return {
             type: "ADD_ID_AND_CARDS_OF_BOARD_TO_STORE",
             idOfBoard,
-            cards: data.cards
+            cards: data.cards,
+            lists: data.lists
         }
     })
 }
@@ -91,12 +92,13 @@ export const addIdAndCardsOfBoardToStore = idOfBoard => {
 /////////////////////////////////// CARDS //////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-export const createCard = (card, idOfCurrentBoard, userId, createCardModalIsVisible) => {
+export const createCard = (card, idOfCurrentBoard, userId, createCardModalIsVisible, listId) => {
 
     const data = {
         card,
         idOfCurrentBoard,
-        userId
+        userId,
+        listId
     }
 
     return axios.post("/create-card", data).then(({ data }) => {
