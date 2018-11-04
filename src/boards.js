@@ -71,6 +71,8 @@ class Boards extends React.Component {
 
                 <div className = "sidebar"></div>
 
+                <p>Current boards:</p>
+                <hr></hr>
                 <div className = "boards-container">
                     { listOfUserBoards }
                 </div>

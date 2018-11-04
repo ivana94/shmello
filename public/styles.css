@@ -129,32 +129,39 @@ div.boards-container {
 /*     position: absolute; */
     margin: 0 50px 0 250px;
     max-width: 1250px;
+    position: absolute;
 }
 
 div.boards-container > a {
 
-    background-color: #45de1d;
-    min-width: 170px;
+    /* background-color: #45de1d; */
+    background-image: url('/clouds.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 170px;
     height: 100px;
     margin: 15px 10px;
     border-radius: 5px;
-    border: 4px solid black;
     flex-grow: 1;
 
-    text-align: center;
+    word-wrap: break-word;
+    color: white;
+    padding: 4px;
+    text-align: left;
     text-decoration: none;
-    color: black;
     font-size: 16px;
     font-weight: 700;
     font-family: sans-serif;
 
 }
 
+
 div.boards-container > a:hover {
-    background-color: violet;
-    border: 4px solid orange;
     color: white;
+    -webkit-filter: brightness(50%);
     cursor: pointer;
+    position: relative;
+    z-index: 9999;
 }
 
 
