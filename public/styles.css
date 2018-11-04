@@ -76,11 +76,10 @@ input.search-bar {
 }
 
 span.shmello-logo {
-    background-image: url("https://a.trellocdn.com/prgb/dist/images/header-logo-2x.01ef898811a879595cea.png");
+
     height: 30px;
     width: 80px;
     position: absolute;
-    background-size: 80px 30px;
 }
 
 div.header-user {

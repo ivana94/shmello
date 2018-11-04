@@ -17,7 +17,7 @@ function Nav(props) {
                 <input className = "search-bar" />
 
                 <Link className = "shmello-link" to = '/'>
-                    <span className = "shmello-logo"></span>
+                    <span className = "shmello-logo">Shmello</span>
                 </Link>
 
                 <div className = "header-user">
