@@ -12,8 +12,22 @@ function Nav(props) {
 
         return (
             <div className = "nav-div">
-                <Link to = '/'><p className = "first-name">{ props.user.first }<span className = "+">+</span></p></Link>
-                <a className = "logout" href = "/logout">logout</a>
+
+                <span className = "icon home-icon">home</span>
+                <span className = "icon boards-icon">boards</span>
+                <input className = "search-bar" />
+
+                <Link className = "shmello-link" to = '/'>
+                    <span className = "shmello-logo"></span>
+                </Link>
+
+                <div className = "header-user">
+                    <span className = "create-icon">1</span>
+                    <span className = "info-icon">2</span>
+                    <span className = "alerts-icon">3</span>
+                    <span className = "logout" href = "/logout">logout</span>
+                </div>
+
             </div>
         ) // END RETURN
 
