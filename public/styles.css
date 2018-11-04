@@ -56,7 +56,8 @@ input.search-bar {
     color: white;
     font-weight: 700;
     border-radius: 3px;
-    }
+}
+
 
 
 .shmello-link {
@@ -76,6 +77,9 @@ input.search-bar {
 
 span.shmello-logo {
     background-image: url("https://a.trellocdn.com/prgb/dist/images/header-logo-2x.01ef898811a879595cea.png");
+    height: 30px;
+    width: 80px;
+    position: absolute;
     background-size: 80px 30px;
 }
 
@@ -85,18 +89,22 @@ div.header-user {
     float: right;
 }
 
-a.logout {
+span.logout {
 
-    color: white;
-    text-decoration: none;
+    float: right;
+    position: relative;
+    top: -0.1rem;
+    /* Created by praveen patchu */
+    background-image: url('/logout.svg');
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
 
     /* display: block;
     float: right;
     position: absolute; */
-    right: 10px;
-    top: 7px;
-    font-family: "Helvetica Neue";
-    font-weight: 300;
+    /* right: 10px;
+    top: 7px; */
 
 }
 

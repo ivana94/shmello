@@ -13,7 +13,6 @@ function Nav(props) {
         return (
             <div className = "nav-div">
 
-                <span className = "icon home-icon">home</span>
                 <span className = "icon boards-icon">boards</span>
                 <input className = "search-bar" />
 
@@ -22,10 +21,7 @@ function Nav(props) {
                 </Link>
 
                 <div className = "header-user">
-                    <span className = "create-icon">1</span>
-                    <span className = "info-icon">2</span>
-                    <span className = "alerts-icon">3</span>
-                    <span className = "logout" href = "/logout">logout</span>
+                    <span className = "logout" href = "/logout"></span>
                 </div>
 
             </div>
