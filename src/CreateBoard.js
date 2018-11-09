@@ -10,12 +10,14 @@ function CreateBoard(props) {
 
 
         return (
-            <div>
-                <form onSubmit = { e => {
+            <div className = "create-board-div">
+                <div onClick = { props.handleClick } className = "create-board-overlay"></div>
+
+                <form className = "create-board-form" onSubmit = { e => {
                     e.preventDefault()
                     props.onClick(e)
                 }}>
-                    <input placeholder = "Add Board Title" name = "board"></input>
+                    <input className = "board-title-input" placeholder = "Add Board Title" name = "board"></input>
                     <button>Create Board</button>
                 </form>
             </div>

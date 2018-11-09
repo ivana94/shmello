@@ -132,9 +132,16 @@ div.boards-container {
     position: absolute;
 }
 
+div.create-new-board {
+    background: #d1d1d1;
+    width: 170px;
+    height: 100px;
+    margin: 15px 10px;
+    border-radius: 5px;
+}
+
 div.boards-container > a {
 
-    /* background-color: #45de1d; */
     background-image: url('/clouds.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -156,13 +163,64 @@ div.boards-container > a {
 }
 
 
-div.boards-container > a:hover {
-    color: white;
+div.boards-container > a:hover, div.boards-container > div:hover {
     -webkit-filter: brightness(50%);
+    color: white;
     cursor: pointer;
     position: relative;
     z-index: 9999;
 }
+
+
+div.create-board-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    z-index: 1;
+}
+
+
+form.create-board-form {
+    position: relative;
+    z-index: 100;
+    width: 30vw;
+    height: 25vh;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 50%;
+    background: rgba(0,0,0,.4);
+    padding: 10px 10px 10px 16px;
+}
+
+form.create-board-form > button {
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+    padding: 6px 12px;
+    margin: 8px 4px 0 0;
+    border: none;
+    box-shadow: 0 1px 0 0 #c2ccd1;
+    background-color: #dfe3e6;
+}
+
+input.board-title-input {
+    background: hsla(0,0%,100%,.15);
+    border: none;
+    display: block;
+    padding: 2px 8px;
+}
+
+
+
+
+
+
+
+
+
 
 
 /* STYLING CARDS */

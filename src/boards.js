@@ -67,7 +67,6 @@ class Boards extends React.Component {
         return (
 
             <div className = "container">
-                <p onClick = { this.handleClick }>toggle me!</p>
 
                 <div className = "sidebar"></div>
 
@@ -75,9 +74,10 @@ class Boards extends React.Component {
                 <hr></hr>
                 <div className = "boards-container">
                     { listOfUserBoards }
+                    <div onClick = { this.handleClick } className = "create-new-board"></div>
                 </div>
 
-                { createBoardIsVisible && <CreateBoard /> }
+                { createBoardIsVisible && <CreateBoard handleClick = { this.handleClick }/> }
             </div>
 
         ) // END RETURN
