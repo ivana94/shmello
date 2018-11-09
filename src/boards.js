@@ -77,7 +77,10 @@ class Boards extends React.Component {
                     <div onClick = { this.handleClick } className = "create-new-board"></div>
                 </div>
 
-                { createBoardIsVisible && <CreateBoard handleClick = { this.handleClick }/> }
+                { createBoardIsVisible && <CreateBoard
+                    handleClick = { this.handleClick }
+                    createBoardIsVisible = { createBoardIsVisible }
+                    /> }
             </div>
 
         ) // END RETURN

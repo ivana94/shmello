@@ -30,9 +30,17 @@ export default function reducer(state = {}, action) {
 
     if (action.type == 'CREATE_BOARD') {
         if (state.boards.length) {
-            state = { ...state, boards: state.boards.concat( action.newBoard ) };
+            state = {
+                ...state,
+                boards: state.boards.concat( action.newBoard ),
+                createBoardIsVisible: false
+            };
         } else {
-            state = { ...state, boards: [ action.newBoard ] };
+            state = {
+                ...state,
+                boards: [ action.newBoard ],
+                createBoardIsVisible: false
+            };
         }
     }
 

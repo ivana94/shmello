@@ -3,33 +3,13 @@
     box-sizing: border-box;
 }
 
-/* LOADING SPINNY */
-div.loading:before {
-    content: '';
-
-    /* POSITION SPINNER IN MID OF PAGE */
-    box-sizing: border-box;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    /* SPINNER W/H */
-    height: 60px;
-    width: 60px;
-
-    /* PUT SPINNER IN MID OF PAGE */
-    /* -30 TO ACCOMODATE HALF OF SPINNER HEIGHT */
-    margin: -30px 0 0 -30px;
-
-    border-radius: 50%;
-    border: 2px solid transparent;
-    border-top-color: coral;
-    border-bottom-color: coral;
-    animation: spinner 1s ease infinite;
-}
 
 
-/* ~~~~~~ NAV ~~~~~ */
+
+
+
+
+/*  ------------------------ nav styling ------------------------ */
 
 div.nav-div {
     background: #0F6BA5;
@@ -89,7 +69,6 @@ div.header-user {
 }
 
 span.logout {
-
     float: right;
     position: relative;
     top: -0.1rem;
@@ -98,15 +77,46 @@ span.logout {
     background-repeat: no-repeat;
     height: 32px;
     width: 32px;
-
-    /* display: block;
-    float: right;
-    position: absolute; */
-    /* right: 10px;
-    top: 7px; */
-
 }
 
+/*  ------------------------ end nav styling ------------------------ */
+
+
+
+
+
+
+
+
+
+
+
+/*  ------------------------ spinner styling ------------------------ */
+
+/* LOADING SPINNY */
+div.loading:before {
+    content: '';
+
+    /* POSITION SPINNER IN MID OF PAGE */
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    /* SPINNER W/H */
+    height: 60px;
+    width: 60px;
+
+    /* PUT SPINNER IN MID OF PAGE */
+    /* -30 TO ACCOMODATE HALF OF SPINNER HEIGHT */
+    margin: -30px 0 0 -30px;
+
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: coral;
+    border-bottom-color: coral;
+    animation: spinner 1s ease infinite;
+}
 
 
 @keyframes spinner {
@@ -115,9 +125,21 @@ span.logout {
     }
 }
 
-/* STYLINGS FOR BOARDS */
+/*  ---------------------- end spinner styling ---------------------- */
+
+
+
+
+
+
+
+
+
+
+
+/*  ------------------------ boards styling ------------------------ */
+
 div.sidebar {
-/*     background: orange; */
     width: 150px;
     height: 50px;
     display: inline-block;
@@ -126,7 +148,6 @@ div.sidebar {
 div.boards-container {
     display: inline-flex;
     flex-wrap: wrap;
-/*     position: absolute; */
     margin: 0 50px 0 250px;
     max-width: 1250px;
     position: absolute;
@@ -172,6 +193,22 @@ div.boards-container > a:hover, div.boards-container > div:hover {
 }
 
 
+/*  ---------------------- end boards styling ---------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  ------------------------ create board modal styling ------------------------ */
 div.create-board-overlay {
     position: absolute;
     left: 0;
@@ -211,10 +248,17 @@ input.board-title-input {
     border: none;
     display: block;
     padding: 2px 8px;
+    width: calc(100% - 18px - 16px);
+    line-height: 24px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 24px;
 }
 
 
 
+/*  ---------------------- end modal styling ---------------------- */
 
 
 
@@ -223,13 +267,11 @@ input.board-title-input {
 
 
 
-/* STYLING CARDS */
+
+/*  ------------------------ cards styling ------------------------ */
 div.cards {
-
-    /* CARD POSITIONING */
     display: flex;
     flex-direction: row;
-
 }
 
 div.card {
@@ -241,7 +283,15 @@ div.card {
 }
 
 
-/* STYLING LISTS */
+/*  ---------------------- end cards styling ---------------------- */
+
+
+
+
+
+
+/*  ------------------------ lists styling ------------------------ */
+
 div.list {
     background: gray;
     display: inline-block;
@@ -249,3 +299,6 @@ div.list {
     height: 80vh;
     padding: 1%;
 }
+
+
+/*  ---------------------- end lists styling ---------------------- */

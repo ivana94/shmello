@@ -8,6 +8,7 @@ import { createBoard } from './actions';
 function CreateBoard(props) {
 
 
+    console.log("props ", props);
 
         return (
             <div className = "create-board-div">
