@@ -171,7 +171,7 @@ div.boards-container {
 
 div.boards-container > a {
 
-    background-image: url('/clouds.jpg');
+    background-image: url('/img/clouds.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     width: 13vw;
