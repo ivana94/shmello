@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS list;
 
 CREATE TABLE list(
     id SERIAL PRIMARY KEY UNIQUE,
-    board_id INTEGER REFERENCES boards(id),
+    board_id INTEGER,
     list VARCHAR(300) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

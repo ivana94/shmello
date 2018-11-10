@@ -30,7 +30,7 @@ class Boards extends React.Component {
 
         // if this runs, then there's a new board
         // and its been successfully added to db and redux
-        if (prevProps.boards.length !== this.props.boards.length) {
+        if (prevProps.boards.length + 1 === this.props.boards.length) {
             location.replace(`/board/${ this.props.boards[this.props.boards.length - 1].id }`);
         }
     }
