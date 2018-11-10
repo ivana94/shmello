@@ -22,6 +22,19 @@ class Boards extends React.Component {
         this.props.dispatch(toggleCreateBoardModal(createBoardIsVisible))
     }
 
+    componentDidUpdate(prevProps) {
+
+        if (!this.props.boards || !prevProps.boards) {
+            return null
+        }
+
+        // if this runs, then there's a new board
+        // and its been successfully added to db and redux
+        if (prevProps.boards.length !== this.props.boards.length) {
+            location.replace(`/board/${ this.props.boards[this.props.boards.length - 1].id }`);
+        }
+    }
+
 
 
 
