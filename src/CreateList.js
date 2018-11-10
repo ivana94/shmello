@@ -14,7 +14,7 @@ function CreateList(props) {
                         e.preventDefault()
                         props.onListClick(e, props.idOfCurrentBoard, props.createListModalIsVisible)
                     }}>
-                        <input autocomplete = "off" placeholder = "Add List" name = "list"></input>
+                        <input autoComplete = "off" placeholder = "Add List" name = "list"></input>
                         <button>Create List</button>
                     </form>
                 </div>

@@ -4,9 +4,13 @@
     font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
+html, body, main {
+    height: 105%;
+}
 
-
-
+.app, .container {
+    height: 105%;
+}
 
 
 
@@ -114,8 +118,8 @@ div.loading:before {
 
     border-radius: 50%;
     border: 2px solid transparent;
-    border-top-color: coral;
-    border-bottom-color: coral;
+    border-top-color: #0F6BA5;
+    border-bottom-color: #0F6BA5;
     animation: spinner 1s ease infinite;
 }
 
@@ -210,7 +214,32 @@ div.boards-container > a:hover, div.boards-container > div:hover {
 
 
 
+/*  ---------------------- single board styling ---------------------- */
 
+
+div.single-board-background {
+    background-image: url('/img/astro.jpg');
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    filter: brightness(50%);
+    position: absolute;
+    z-index: 1;
+}
+
+
+div.single-board-container {
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+
+
+
+
+/*  -------------------- end single board styling -------------------- */
 
 
 

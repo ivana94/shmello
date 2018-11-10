@@ -7,7 +7,8 @@ import {
     deleteBoard,
     toggleCreateCard,
     addIdAndCardsOfBoardToStore,
-    toggleCreateList
+    toggleCreateList,
+    removeBoardId
 } from './actions';
 
 import CreateCard from './CreateCard'
@@ -30,6 +31,10 @@ class SingleBoard extends React.Component {
         this.props.addIdAndCardsOfBoardToStore(idOfBoard)
     }
 
+    componentWillUnmount() {
+        this.props.removeBoardId(this.props.idOfCurrentBoard)
+    }
+
 
 
     render() {
@@ -49,12 +54,16 @@ class SingleBoard extends React.Component {
             return (
 
                 <div className = "container">
-                    <Link to = "/" onClick = { () => this.props.delete(idOfBoard) } className = "delete-board-button">delete this board</Link>
-                    <h1>{ nameOfBoard }</h1>
-                    <p onClick = { () => toggleCreateListModal(createListModalIsVisible) }>click to create list</p>
+                    <div className = "single-board-background"></div>
 
-                    <Lists />
-                    { createListModalIsVisible && <CreateList />}
+                    <div className = "single-board-container">
+                        <Link to = "/" onClick = { () => this.props.delete(idOfBoard) } className = "delete-board-button">delete this board</Link>
+                        <h1>{ nameOfBoard }</h1>
+                        <p onClick = { () => toggleCreateListModal(createListModalIsVisible) }>click to create list</p>
+
+                        <Lists />
+                        { createListModalIsVisible && <CreateList />}
+                    </div>
                 </div>
 
             ) // END RETURN
@@ -74,7 +83,8 @@ const mapStateToProps = state => {
     return {
         boards: state.boards,
         createCardModalIsVisible: state.createCardModalIsVisible,
-        createListModalIsVisible: state.createListModalIsVisible
+        createListModalIsVisible: state.createListModalIsVisible,
+        idOfCurrentBoard: state.idOfCurrentBoard
     }
 }
 
@@ -92,6 +102,10 @@ const mapDispatchToProps = dispatch => {
 
         addIdAndCardsOfBoardToStore: idOfBoard => {
             dispatch(addIdAndCardsOfBoardToStore(idOfBoard))
+        },
+
+        removeBoardId: idOfBoard => {
+            dispatch(removeBoardId(idOfBoard))
         }
 
     }

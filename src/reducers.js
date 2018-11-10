@@ -53,6 +53,15 @@ export default function reducer(state = {}, action) {
     }
 
 
+    // remove board id from state
+    if (action.type == 'REMOVE_BOARD_ID') {
+        state = {
+            ...state,
+            idOfCurrentBoard: null
+        }
+    }
+
+
 
     // PUSH USER'S NEWEST COMMENT TO STATE
     if (action.type == 'GET_ALL_BOARD_NAMES') {

@@ -24,6 +24,10 @@ class App extends React.Component {
       this.props.dispatch(userInfo())
     }
 
+    componentWillMount() {
+
+    }
+
 
 
 
@@ -32,9 +36,9 @@ class App extends React.Component {
         return (
 
             <BrowserRouter>
-                <div>
-                    <Nav />
+                <div className = "app">
 
+                    <Nav />
                     <Route exact path = "/" component = { Boards } />
                     <Route exact path = "/board/:id" component = { SingleBoard } />
 
@@ -56,20 +60,10 @@ class App extends React.Component {
 
 } // END COMPONENT
 
-
-
-
-
-
-
-
 const mapStateToProps = state => {
     return {
-        user: state.user,
-        newBoard: state.newBoard,
-        createBoardIsVisible: state.createBoardIsVisible,
-        boards: state.boards
+        idOfCurrentBoard: state.idOfCurrentBoard
     }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(null)(App);

@@ -9,13 +9,8 @@ class Boards extends React.Component {
 
     constructor(props) {
         super(props)
-
         this.handleClick = this.handleClick.bind(this)
-
     }
-
-
-
 
     handleClick() {
         const { createBoardIsVisible } = this.props
@@ -51,6 +46,7 @@ class Boards extends React.Component {
                 <div className = "loading" ></div>
             );
         }
+
 
         if (boards.length) {
             listOfUserBoards = boards.map((elem, id) => (
