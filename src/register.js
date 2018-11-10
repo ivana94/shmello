@@ -46,10 +46,10 @@ export default class Register extends React.Component {
                 <h2>Register</h2>
 
                     { this.state.error && <div>error</div> }
-                    <input onChange = { this.handleChange } placeholder = "first" name = "first" />
-                    <input onChange = { this.handleChange } placeholder = "last" name = "last" />
-                    <input onChange = { this.handleChange } placeholder = "email" name = "email" />
-                    <input onChange = { this.handleChange } placeholder = "password" name = "password" type = "password" />
+                    <input autocomplete = "off" onChange = { this.handleChange } placeholder = "first" name = "first" />
+                    <input autocomplete = "off" onChange = { this.handleChange } placeholder = "last" name = "last" />
+                    <input autocomplete = "off" onChange = { this.handleChange } placeholder = "email" name = "email" />
+                    <input autocomplete = "off" onChange = { this.handleChange } placeholder = "password" name = "password" type = "password" />
                     <button onClick={ this.handleSubmit }>register</button><br /><br />
                     <span id = "link">Already have an account? <Link to = "/login" >Login here!</Link></span>
 

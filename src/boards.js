@@ -83,11 +83,11 @@ class Boards extends React.Component {
 
                 <div className = "sidebar"></div>
 
-                <p>Current boards:</p>
-                <hr></hr>
+
+                <h3 className = "current-boards-header">Current boards</h3>
                 <div className = "boards-container">
                     { listOfUserBoards }
-                    <div onClick = { this.handleClick } className = "create-new-board"></div>
+                    <Link to = "#" onClick = { this.handleClick } className = "create-new-board"></Link>
                 </div>
 
                 { createBoardIsVisible && <CreateBoard

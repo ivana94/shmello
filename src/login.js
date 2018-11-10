@@ -68,8 +68,8 @@ export default class Login extends React.Component {
                 <h2>Login</h2>
 
                 { this.state.error && <div>wrong email or password</div> }
-                <input onChange = { this.handleChange } value = { this.state.email } placeholder = "email" name = "email" />
-                <input onChange = { this.handleChange } value = { this.state.password } placeholder = "password" name = "password" type = "password" />
+                <input autocomplete = "off" onChange = { this.handleChange } value = { this.state.email } placeholder = "email" name = "email" />
+                <input autocomplete = "off" onChange = { this.handleChange } value = { this.state.password } placeholder = "password" name = "password" type = "password" />
                 <button onClick={ this.handleSubmit }>login</button> <br /><br />
                 <span id = "link">Don't have an account? <Link to ="/">Create one here!</Link></span>
             </div>

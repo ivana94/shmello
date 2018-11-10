@@ -17,7 +17,7 @@ function CreateBoard(props) {
                     e.preventDefault()
                     props.onClick(e)
                 }}>
-                    <input className = "board-title-input" placeholder = "Add Board Title" name = "board"></input>
+                    <input autocomplete = "off" className = "board-title-input" placeholder = "Add Board Title" name = "board"></input>
                     <button>Create Board</button>
                 </form>
             </div>

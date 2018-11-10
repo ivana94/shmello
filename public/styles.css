@@ -1,6 +1,7 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 
@@ -139,6 +140,17 @@ div.loading:before {
 
 /*  ------------------------ boards styling ------------------------ */
 
+
+/*  styling for header on home page */
+h3.current-boards-header {
+    line-height: 24px;
+    margin: 4px 0 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 6vw 5vh 29vw;
+}
+
+
 div.sidebar {
     width: 150px;
     height: 50px;
@@ -148,17 +160,9 @@ div.sidebar {
 div.boards-container {
     display: inline-flex;
     flex-wrap: wrap;
-    margin: 0 50px 0 250px;
+    margin: 0 6vw 0 29vw;
     max-width: 1250px;
     position: absolute;
-}
-
-div.create-new-board {
-    background: #d1d1d1;
-    width: 170px;
-    height: 100px;
-    margin: 15px 10px;
-    border-radius: 5px;
 }
 
 div.boards-container > a {
@@ -166,21 +170,27 @@ div.boards-container > a {
     background-image: url('/clouds.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    width: 170px;
-    height: 100px;
-    margin: 15px 10px;
+    width: 13vw;
+    height: 16vh;
+    margin: 0 2rem 1.5rem 0;
     border-radius: 5px;
     flex-grow: 1;
 
     word-wrap: break-word;
     color: white;
-    padding: 4px;
+    padding: 8px;
     text-align: left;
     text-decoration: none;
     font-size: 16px;
     font-weight: 700;
     font-family: sans-serif;
 
+}
+
+/*  styling for create new board gray box on home page */
+div.boards-container > a:last-child {
+    background: #d1d1d1;
+    border-radius: 5px;
 }
 
 

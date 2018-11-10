@@ -14,7 +14,7 @@ function Nav(props) {
             <div className = "nav-div">
 
                 <span className = "icon boards-icon">boards</span>
-                <input className = "search-bar" />
+                <input autocomplete = "off" className = "search-bar" />
 
                 <Link className = "shmello-link" to = '/'>
                     <span className = "shmello-logo">Shmello</span>

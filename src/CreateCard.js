@@ -18,7 +18,7 @@ function CreateCard(props) {
                             props.listId
                         )
                     }}>
-                        <input placeholder = "Add Card" name = "card"></input>
+                        <input autocomplete = "off" placeholder = "Add Card" name = "card"></input>
                         <button>Create Card</button>
                     </form>
                 </div>
