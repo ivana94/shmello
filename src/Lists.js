@@ -11,15 +11,13 @@ function Lists(props) {
 
 
     return (
-        <div>
+        <div className = 'list-container'>
 
             { props.lists && props.lists.map(list => {
                     return (
                         <div className = "list" key = { list.id }>
-                            <p>{list.list}</p>
-                            <CreateCard
-                                listId = { list.id }
-                            />
+                            <h3 className = "list-title">{list.list}</h3>
+                            <CreateCard listId = { list.id } />
                         { props.cards && props.cards.map(card => {
                                 if (list.id === card.list_id) {
                                     return (

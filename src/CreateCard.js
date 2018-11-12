@@ -20,6 +20,8 @@ function CreateCard(props) {
                     }}>
                         <input autoComplete = "off" placeholder = "Add Card" name = "card"></input>
                         <button>Create Card</button>
+                        <br />
+                        <br />
                     </form>
                 </div>
 
