@@ -57,11 +57,11 @@ class SingleBoard extends React.Component {
                     <div className = "single-board-background"></div>
 
                     <div className = "single-board-container">
-                        <Link to = "/" onClick = { () => this.props.delete(idOfBoard) } className = "delete-board-button">delete this board</Link>
                         <h1>{ nameOfBoard }</h1>
                         <p onClick = { () => toggleCreateListModal(createListModalIsVisible) }>click to create list</p>
 
                         <Lists />
+                        <Link to = "/" onClick = { () => this.props.delete(idOfBoard) } className = "delete-board-button">delete this board</Link>
                         { createListModalIsVisible && <CreateList />}
                     </div>
                 </div>

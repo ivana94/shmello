@@ -4,6 +4,11 @@
     font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
+*::selection {
+    background: #39ffb6;
+    color: black;
+}
+
 html, body, main {
     height: 105%;
 }
@@ -17,30 +22,33 @@ html, body, main {
 /*  ------------------------ nav styling ------------------------ */
 
 div.nav-div {
-    background: #0F6BA5;
-    height: 37px;
+    background: #39ffb6;
+    color: black;
+    height: 3rem;
     position: relative;
-    padding: 4px;
+    padding: 0.5rem;
+    border-bottom: 2px solid black;
 }
 
 input.search-bar {
-    background: hsla(0,0%,100%,.3);
-
+    background: hsla(0,0%,100%,0.8);
+    border: 1px solid black;
     box-shadow: none;
     box-sizing: border-box;
-    padding: 8px 8px;
-    border: none;
-    border-radius: 3px;
+    padding: 0.6rem 8px;
+/*     border: none; */
+    border-radius: 2px;
 }
 
 .icon {
     line-height: 30px;
     float: left;
     margin: 0 0.2rem;
-    background: hsla(0,0%,100%,.3);
-    color: white;
+    border: 1px solid black;
+    padding: 0.04rem 0.5rem;
+    color: black;
     font-weight: 700;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 
@@ -49,19 +57,18 @@ input.search-bar {
     /* TEXT POSITIONING */
     position: absolute;
     left: 50%;
-    top: 0.3rem;
+    top: 0.5rem;
 
     /* TEXT STYLING */
     text-decoration: none;
     text-align: center;
-    font-family: "Helvetica Neue";
-    color: white;
-    font-weight: 300;
-    font-size: 24px;
+    font-family: Impact;
+    color: black;
+    font-weight: 900;
+    font-size: 2rem;
 }
 
 span.shmello-logo {
-
     height: 30px;
     width: 80px;
     position: absolute;
@@ -149,9 +156,12 @@ div.loading:before {
 h3.current-boards-header {
     line-height: 24px;
     margin: 4px 0 0;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 700;
-    margin: 0 6vw 5vh 29vw;
+    margin: 0 8.6vw 5vh 29vw;
+    background: #ff83e4;
+    padding: 1rem;
+    border-radius: 2px;
 }
 
 
@@ -171,9 +181,12 @@ div.boards-container {
 
 div.boards-container > a {
 
-    background-image: url('/img/clouds.jpg');
+/*     background-image: url('/img/clouds.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    background: orange;
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px black;
     width: 13vw;
     height: 16vh;
     margin: 0 2rem 1.5rem 0;
@@ -181,13 +194,14 @@ div.boards-container > a {
     flex-grow: 1;
 
     word-wrap: break-word;
-    color: white;
+    color: black;
     padding: 8px;
     text-align: left;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: bolder;
     font-family: sans-serif;
+    font-style: italic;
 
 }
 
@@ -199,11 +213,14 @@ div.boards-container > a:last-child {
 
 
 div.boards-container > a:hover, div.boards-container > div:hover {
-    -webkit-filter: brightness(50%);
-    color: white;
+    box-shadow: 10px 10px 10px black;
+    transform: translateY(5px);
     cursor: pointer;
-    position: relative;
-    z-index: 9999;
+}
+
+div.boards-container > a:active, div.boards-container > div:active {
+   box-shadow: 1px 1px 1px black;
+    transform: translateY(-5px);
 }
 
 
@@ -215,23 +232,48 @@ div.boards-container > a:hover, div.boards-container > div:hover {
 
 
 /*  ---------------------- single board styling ---------------------- */
+a.delete-board-button {
+    text-decoration: none;
+    background: red;
+    padding: 0.3rem;
+    font-weight: bold;
+    color: white;
+    border: 1px solid black;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 2rem;
+}
+
 
 div.single-board-background {
-    background-image: url('/img/forest.jpg');
-    background-size: 100% 100%;
+    background: #ffe4e8;
     width: 100%;
-    height: 100%;
+    height: 130%;
     background-repeat: no-repeat;
-    filter: brightness(30%);
     position: absolute;
     z-index: 1;
 }
 
 
 div.single-board-container {
-    color: white;
+    color: black;
     position: relative;
     z-index: 100;
+}
+
+div.single-board-container h1 {
+    font-family: Impact;
+    letter-spacing: 4px;
+    line-height: 5rem;
+    font-size: 5rem;
+    margin-left: 2.4rem;
+    padding: 2rem 0 5rem 0;
+}
+
+div.single-board-container h1::selection {
+    background: #39ffb6;
+    color: black;
 }
 
 
@@ -251,9 +293,9 @@ div.create-board-overlay {
     position: absolute;
     left: 0;
     top: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 140%;
+    background: rgba(0,0,0,0.8);
     z-index: 1;
 }
 
@@ -266,19 +308,24 @@ form.create-board-form {
     left: 50%;
     transform: translateX(-50%);
     bottom: 50%;
-    background: rgba(0,0,0,.4);
+    border-radius: 2px;
+    box-shadow: 10px 10px 10px black;
+    background: white;
     padding: 10px 10px 10px 16px;
 }
 
 form.create-board-form > button {
     font-weight: 700;
+    font-size: 1rem;
     line-height: 20px;
     text-align: center;
     padding: 6px 12px;
     margin: 8px 4px 0 0;
     border: none;
     box-shadow: 0 1px 0 0 #c2ccd1;
-    background-color: #dfe3e6;
+    background-color: orange;
+    border: 3px solid black;
+    border-radius: 2px;
 }
 
 input.board-title-input {
@@ -288,8 +335,8 @@ input.board-title-input {
     padding: 2px 8px;
     width: calc(100% - 18px - 16px);
     line-height: 24px;
-    color: white;
-    font-size: 1rem;
+    color: black;
+    font-size: 1.5rem;
     font-weight: 700;
     line-height: 24px;
 }
@@ -338,6 +385,7 @@ div.card:hover {
 
 
 /*  ------------------------ lists styling ------------------------ */
+
 div.list-container {
     overflow-x: scroll;
     overflow-y: hidden;
@@ -346,21 +394,29 @@ div.list-container {
 
 
 div.list {
-    background:  hsla(0, 0%, 100%, 0.2);
+    background:  hsla(0, 0%, 100%, 0.5);
     display: inline-block;
-    border: 1px solid white;
-    box-shadow: 3px 5px 30px black;
+    border: 1px solid black;
+    border-radius: 50px 2px 50px 2px;
+    box-shadow: 3px 5px 20px black;
     margin: 1rem 2rem;
     padding: 1%;
     height: 75vh;
     overflow-y: scroll;
 }
 
+h3.list-title {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-bottom: 1rem;
+}
+
 input[name="card"] {
     border: none;
     background: none;
     border-bottom: 1px solid black;
-    color: white;
+    color: black;
     font-family: sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
@@ -369,7 +425,7 @@ input[name="card"] {
 }
 
 input[name="card"]::placeholder {
-    color: white;
+    color: black;
 }
 
 input[name="card"]:focus {
