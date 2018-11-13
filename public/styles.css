@@ -258,7 +258,8 @@ div.single-board-container {
 
 div.single-board-container h1 {
     font-family: Impact;
-    letter-spacing: 4px;
+    font-style: italic;
+    letter-spacing: 3px;
     line-height: 5rem;
     font-size: 5rem;
     margin-left: 2.4rem;
@@ -355,11 +356,12 @@ div.card {
     font-size: 1.5rem;
     border-radius: 3px;
     background: white;
-    box-shadow: 5px 5px 1px black;
+/*     box-shadow: 5px 5px 0px black; */
     height: 10rem;
     text-align: center;
     width: 75%;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 div.card:hover {
@@ -388,6 +390,7 @@ div.list {
     display: inline-block;
     border-radius: 50px 2px 50px 2px;
     margin: 1rem 2rem;
+    /* box-shadow: 5px 5px 0px black; */
     padding: 1%;
     height: 75vh;
     overflow-y: scroll;
