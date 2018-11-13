@@ -263,7 +263,7 @@ div.single-board-container h1 {
     line-height: 5rem;
     font-size: 5rem;
     margin-left: 2.4rem;
-    padding: 2rem 0 5rem 0;
+    padding: 2rem 0 2rem 0;
 }
 
 div.single-board-container h1::selection {
@@ -377,6 +377,25 @@ div.card:hover {
 
 
 /*  ------------------------ lists styling ------------------------ */
+p.create-list-p {
+    margin: 0 auto 5vh auto;
+    width: 15%;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 2px;
+    box-shadow: 5px 5px 0px 0px black;
+
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    box-shadow: 3px 3px 0px black;
+}
+
+p.create-list-p:hover {
+    text-decoration: underline;
+}
+
 
 div.list-container {
     overflow-x: scroll;
