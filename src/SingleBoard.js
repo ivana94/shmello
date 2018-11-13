@@ -59,10 +59,10 @@ class SingleBoard extends React.Component {
                     <div className = "single-board-container">
                         <h1>{ nameOfBoard }</h1>
                         <p className = "create-list-p" onClick = { () => toggleCreateListModal(createListModalIsVisible) }>+ create list</p>
+                        { createListModalIsVisible && <CreateList />}
 
                         <Lists />
                         <Link to = "/" onClick = { () => this.props.delete(idOfBoard) } className = "delete-board-button">delete this board</Link>
-                        { createListModalIsVisible && <CreateList />}
                     </div>
                 </div>
 

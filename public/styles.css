@@ -396,6 +396,33 @@ p.create-list-p:hover {
     text-decoration: underline;
 }
 
+div.create-list-container {
+    display: flex;
+    justify-content: center;
+}
+
+div.create-list-container input {
+    border: none;
+    background: none;
+    border-bottom: 1px solid black;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 1rem 1rem;
+    text-align: center;
+}
+
+div.create-list-container button {
+    margin: 0 auto;
+    border: none;
+    border-radius: 2px;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    background: rgb(250, 255, 166);
+    box-shadow: 5px 5px 0 black;
+}
 
 div.list-container {
     overflow-x: scroll;
@@ -460,13 +487,8 @@ input[name="card"] + button {
     box-shadow: 3px 3px 0px black;
 }
 input[name="card"] + button:hover {
-    box-shadow: 10px 10px 10px black;
-    transform: translateY(-3px);
-}
-
-input[name="card"] + button:active {
-    box-shadow: 0 5px black;
-    transform: translateY(4px);
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 

@@ -9,7 +9,7 @@ function CreateList(props) {
 
             return (
 
-                <div>
+                <div className = "create-list-container">
                     <form onSubmit = { e => {
                         e.preventDefault()
                         props.onListClick(e, props.idOfCurrentBoard, props.createListModalIsVisible)
