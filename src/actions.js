@@ -174,3 +174,13 @@ export const createList = async (list, idOfCurrentBoard, createListModalIsVisibl
     };
 
 };
+
+
+export const dropList = (id, i, list) => {
+    return {
+        type: "DROP_LIST",
+        id,
+        i,
+        list
+    }
+}

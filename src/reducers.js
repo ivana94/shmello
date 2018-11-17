@@ -155,6 +155,23 @@ export default function reducer(state = {}, action) {
     }
 
 
+    if (action.type == 'DROP_LIST') {
+
+        let filteredList = state.lists.filter(list => {
+            if (list.id != action.id) {
+                return list
+            }
+        })
+
+        filteredList = [ ...filteredList, action.list ]
+        state = {
+            ...state,
+            lists: filteredList
+        };
+
+    }
+
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
