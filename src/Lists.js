@@ -52,6 +52,10 @@ class Lists extends React.Component {
         filteredList.concat(itemToMove)
     }
 
+    onMouseOver() {
+        console.log("mouse over!");
+    }
+
 
     render() {
 
@@ -72,6 +76,7 @@ class Lists extends React.Component {
                                 onDragStart = { e => this.onDragStart(e, list.id) }
                                 draggable
                                 className = "list"
+                                onMouseOver = { this.onMouseOver }
                                 key = { list.id }
                             >
                                 <h3 className = "list-title">{list.list}</h3>
