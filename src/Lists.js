@@ -26,7 +26,6 @@ class Lists extends React.Component {
     }
 
     onDrop(evt, category) {
-        console.log("evt: ", evt);
 
         // id of list to move
         let id = evt.dataTransfer.getData('id')

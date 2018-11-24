@@ -444,6 +444,7 @@ div.list {
     padding: 1%;
     height: 75vh;
     overflow-y: scroll;
+    max-width: 300px;
 }
 
 div.list:nth-of-type(even) {
@@ -459,6 +460,7 @@ h3.list-title {
     font-size: 2rem;
     line-height: 2.5rem;
     margin-bottom: 1rem;
+    white-space: pre-wrap;
 }
 
 input[name="card"] {

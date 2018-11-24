@@ -14,7 +14,7 @@ export default function Welcome() {
 
         return (
           <div className = "welcome-container">
-            <h1>Welcome to Trello</h1>
+            <h1>Welcome to Shmello</h1>
 
               <HashRouter>
                   <div>
