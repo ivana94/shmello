@@ -438,6 +438,8 @@ div.list-container {
 div.list {
     background:  hsla(0, 0%, 100%, 0.5);
     display: inline-block;
+    position: relative;
+    z-index: 999;
     border-radius: 50px 2px 50px 2px;
     margin: 1rem 2rem;
     /* box-shadow: 5px 5px 0px black; */
@@ -445,6 +447,11 @@ div.list {
     height: 75vh;
     overflow-y: scroll;
     max-width: 300px;
+}
+
+div.dragging {
+    background: gold !important;
+    z-index: 1 !important;
 }
 
 div.list:nth-of-type(even) {

@@ -10,6 +10,7 @@ class Lists extends React.Component {
 
     constructor(props) {
         super(props)
+        this.state = { dragId: null }
     }
 
 
@@ -23,7 +24,9 @@ class Lists extends React.Component {
         // and is available for use when required.
         // It may be required while dropping on a target.
         evt.dataTransfer.setData("id", id)
+        this.setState({ dragId: id })
     }
+
 
     onDrop(evt, category) {
 
@@ -49,10 +52,15 @@ class Lists extends React.Component {
         })
 
         filteredList.concat(itemToMove)
+        this.setState({ dragId: null })
     }
 
     onMouseOver() {
         console.log("mouse over!");
+    }
+
+    onMouseUp() {
+        console.log("************* mouse up!");
     }
 
 
@@ -74,8 +82,9 @@ class Lists extends React.Component {
                             <div
                                 onDragStart = { e => this.onDragStart(e, list.id) }
                                 draggable
-                                className = "list"
+                                className = {"list " + ( this.state.dragId === list.id ? "dragging" : "" )}
                                 onMouseOver = { this.onMouseOver }
+                                onMouseUp = { this.onMouseUp }
                                 key = { list.id }
                             >
                                 <h3 className = "list-title">{list.list}</h3>
