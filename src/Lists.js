@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from "react-redux";
-import CreateCard from './CreateCard'
 import { dropList } from './actions'
-
+import { Droppable } from 'react-beautiful-dnd'
+import List from './list'
 
 
 class Lists extends React.Component {
@@ -14,55 +14,6 @@ class Lists extends React.Component {
     }
 
 
-    onDragOver(evt) {
-        evt.preventDefault()
-    }
-
-    onDragStart(evt, id) {
-        // store id of item we're dragging in dataTransfer object
-        // this ensures that the element being dragged is stored in the event object
-        // and is available for use when required.
-        // It may be required while dropping on a target.
-        evt.dataTransfer.setData("id", id)
-        this.setState({ dragId: id })
-    }
-
-
-    onDrop(evt, category) {
-
-        // id of list to move
-        let id = evt.dataTransfer.getData('id')
-        let i;
-
-        let itemToMove = this.props.lists.filter((list, idx) => {
-            if (list.id == id) {
-                i = idx
-                return list
-            }
-        })
-
-        itemToMove = itemToMove[0]
-
-        this.props.dispatch(dropList(id, i, itemToMove))
-
-        let filteredList = this.props.lists.filter(list=> {
-            if (list.id != id) {
-                return list
-            }
-        })
-
-        filteredList.concat(itemToMove)
-        this.setState({ dragId: null })
-    }
-
-    onMouseOver() {
-        console.log("mouse over!");
-    }
-
-    onMouseUp() {
-        console.log("************* mouse up!");
-    }
-
 
     render() {
 
@@ -71,40 +22,34 @@ class Lists extends React.Component {
 
 
         return (
-            <div
-                className = 'list-container'
-                onDragOver = { ( e => this.onDragOver(e) ) }
-                onDrop = { e => this.onDrop(e, 'complete') }
-            >
 
-                { this.props.lists && this.props.lists.map(list => {
-                        return (
-                            <div
-                                onDragStart = { e => this.onDragStart(e, list.id) }
-                                draggable
-                                className = {"list " + ( this.state.dragId === list.id ? "dragging" : "" )}
-                                onMouseOver = { this.onMouseOver }
-                                onMouseUp = { this.onMouseUp }
-                                key = { list.id }
-                            >
-                                <h3 className = "list-title">{list.list}</h3>
-                                <CreateCard listId = { list.id } />
-                            { this.props.cards && this.props.cards.map(card => {
-                                    if (list.id === card.list_id) {
-                                        return (
-                                            <div className = "card" key = { card.id }>
-                                                <p>{ card.card }</p>
-                                            </div>
-                                        )
-                                    }
-                                })
-                            }
-                            </div>
+                <div
+                    className = 'list-container'
+                >
+
+                    { this.props.lists && this.props.lists.map(list => {
+                            return (
+                                <Droppable droppableId = { list.id } key = { list.id }>
+                                    { (provided) => (
+                                    <List
+                                        innerRef = { provided.innerRef }
+                                        { ...provided.droppableProps }
+                                        className = "list "
+                                        key = { list.id }
+                                        listId = { list.id }
+                                        list = { list.list }
+                                        cards = { this.props.cards }
+                                    >
+                                    { provided.placeholder }
+                                </List>
+                            )
+                        }
+                    </Droppable>
                         )
                     })
                 }
+                </div>
 
-            </div>
         )
     }
 }

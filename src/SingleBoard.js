@@ -11,10 +11,12 @@ import {
     removeBoardId
 } from './actions';
 
-import CreateCard from './CreateCard'
+import CreateCard from './create-card'
 import CreateBoard from './CreateBoard';
 import CreateList from './CreateList';
 import Lists from './Lists';
+import { DragDropContext } from 'react-beautiful-dnd'
+
 
 
 
@@ -33,6 +35,11 @@ class SingleBoard extends React.Component {
 
     componentWillUnmount() {
         this.props.removeBoardId(this.props.idOfCurrentBoard)
+    }
+
+    onDragEnd(result) {
+        // responsible for updating state SYNC
+        // when drag n drop finished
     }
 
 
@@ -61,7 +68,12 @@ class SingleBoard extends React.Component {
                         <p className = "create-list-p" onClick = { () => toggleCreateListModal(createListModalIsVisible) }>+ create list</p>
                         { createListModalIsVisible && <CreateList />}
 
-                        <Lists />
+
+                        <DragDropContext onDragEnd = { this.onDragEnd }>
+                            <Lists />
+                        </DragDropContext>
+
+
                         <Link to = "/" onClick = { () => this.props.delete(idOfBoard) } className = "delete-board-button">delete this board</Link>
                     </div>
                 </div>
